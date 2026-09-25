@@ -71,4 +71,6 @@ Sau khi deploy, chạy thêm bộ test browser thủ công trong `docs/TEST_CASE
 Xem hướng dẫn chi tiết: `docs/DEPLOY_GITHUB_PAGES.md`.
 
 ## 25/09/2026 HUST
+
 Phím tắt mở terminal trong VSCode: Ctrl + ~
+unsaved
