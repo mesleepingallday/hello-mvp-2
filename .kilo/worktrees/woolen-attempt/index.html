@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Hello Calculator MVP v1.0 - ứng dụng Web nhỏ để học HTML, CSS, JavaScript, DOM, Event và State." />
+  <title>Hello Calculator MVP v1.0</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script type="module" src="js/app.js"></script>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="app-header" aria-labelledby="app-title">
+      <div>
+        <p class="eyebrow">WEB PROGRAMMING DEMO</p>
+        <h1 id="app-title">Hello Calculator</h1>
+        <p class="subtitle">HTML <span aria-hidden="true">•</span> CSS <span aria-hidden="true">•</span> JavaScript</p>
+      </div>
+      <span class="version-badge" aria-label="Phiên bản 1.0">MVP v1.0</span>
+    </header>
+
+    <section class="learning-goal" aria-labelledby="learning-goal-title">
+      <h2 id="learning-goal-title">Học bằng cách quan sát</h2>
+      <p>Nhấn phím và theo dõi chuỗi <strong>Event → State → Render → DOM</strong> ở bảng Developer / Learning bên dưới.</p>
+    </section>
+
+    <section class="calculator-card" aria-label="Máy tính cơ bản">
+      <div class="calculator-title-row">
+        <h2>Calculator</h2>
+        <span id="status-badge" class="status-badge" aria-hidden="true">Ready</span>
+      </div>
+
+      <div class="display-panel" aria-label="Màn hình calculator">
+        <div id="expression" class="expression" aria-label="Biểu thức hiện tại">&nbsp;</div>
+        <div id="display" class="main-display" role="status" aria-live="polite" aria-atomic="true">0</div>
+      </div>
+
+      <div id="keypad" class="keypad" aria-label="Bàn phím calculator">
+        <button class="key key-control" type="button" data-action="clear" aria-label="Xóa toàn bộ">C</button>
+        <button class="key key-control" type="button" data-action="backspace" aria-label="Xóa ký tự cuối">⌫</button>
+        <button class="key key-operator" type="button" data-action="operator" data-value="/" aria-label="Chia">÷</button>
+        <button class="key key-operator" type="button" data-action="operator" data-value="*" aria-label="Nhân">×</button>
+
+        <button class="key key-number" type="button" data-action="number" data-value="7">7</button>
+        <button class="key key-number" type="button" data-action="number" data-value="8">8</button>
+        <button class="key key-number" type="button" data-action="number" data-value="9">9</button>
+        <button class="key key-operator" type="button" data-action="operator" data-value="-" aria-label="Trừ">−</button>
+
+        <button class="key key-number" type="button" data-action="number" data-value="4">4</button>
+        <button class="key key-number" type="button" data-action="number" data-value="5">5</button>
+        <button class="key key-number" type="button" data-action="number" data-value="6">6</button>
+        <button class="key key-operator" type="button" data-action="operator" data-value="+" aria-label="Cộng">+</button>
+
+        <button class="key key-number" type="button" data-action="number" data-value="1">1</button>
+        <button class="key key-number" type="button" data-action="number" data-value="2">2</button>
+        <button class="key key-number" type="button" data-action="number" data-value="3">3</button>
+        <button class="key key-equal" type="button" data-action="equals" aria-label="Tính kết quả">=</button>
+
+        <button class="key key-number key-zero" type="button" data-action="number" data-value="0">0</button>
+        <button class="key key-number" type="button" data-action="decimal" data-value=".">.</button>
+      </div>
+
+      <p class="keyboard-hint"><strong>Mẹo:</strong> Có thể dùng bàn phím: 0–9, +, -, *, /, Enter, Backspace, Escape.</p>
+    </section>
+
+    <details id="learning-panel" class="learning-panel" open>
+      <summary>Developer / Learning Panel</summary>
+      <div class="state-grid" aria-live="polite">
+        <div class="state-label">Event</div><output id="state-event">init</output>
+        <div class="state-label">Value</div><output id="state-value">—</output>
+        <div class="state-label">currentInput</div><output id="state-current-input">"0"</output>
+        <div class="state-label">firstOperand</div><output id="state-first-operand">null</output>
+        <div class="state-label">operator</div><output id="state-operator">null</output>
+        <div class="state-label">waitingForOperand</div><output id="state-waiting">false</output>
+      </div>
+      <p class="panel-note">Bảng này chỉ để phục vụ giảng dạy. Nó cho thấy trạng thái JavaScript thay đổi sau mỗi thao tác.</p>
+    </details>
+
+    <section class="concept-strip" aria-label="Các khái niệm Web được minh họa">
+      <span>HTML = cấu trúc</span>
+      <span>CSS = trình bày</span>
+      <span>JS = hành vi</span>
+      <span>DOM = giao diện đang sống</span>
+    </section>
+
+    <footer class="app-footer">
+      <p>Hello Calculator MVP v1.0 · A teaching project for Web fundamentals.</p>
+    </footer>
+  </main>
+</body>
+</html>
