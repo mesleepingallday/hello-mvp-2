@@ -1,8 +1,6 @@
 'use strict';
 
-import { CalculatorModel } from './calculator.js';
-
-const model = new CalculatorModel();
+const model = new window.CalculatorModel();
 
 const dom = {
   keypad: document.querySelector('#keypad'),
