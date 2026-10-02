@@ -5,6 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Hello Calculator MVP v1.0 - ứng dụng Web nhỏ để học HTML, CSS, JavaScript, DOM, Event và State." />
   <title>Hello Calculator MVP v1.0</title>
+  <script>
+    (() => {
+      try {
+        const savedTheme = localStorage.getItem('hello-calculator-theme');
+        if (savedTheme === 'light' || savedTheme === 'dark') {
+          document.documentElement.dataset.theme = savedTheme;
+        }
+      } catch (_) {}
+    })();
+  </script>
   <link rel="stylesheet" href="css/style.css" />
   <script type="module" src="js/app.js"></script>
 </head>
@@ -16,7 +26,13 @@
         <h1 id="app-title">Hello Calculator</h1>
         <p class="subtitle">HTML <span aria-hidden="true">•</span> CSS <span aria-hidden="true">•</span> JavaScript</p>
       </div>
-      <span class="version-badge" aria-label="Phiên bản 1.0">MVP v1.0</span>
+      <div class="header-actions">
+        <span class="version-badge" aria-label="Phiên bản 1.0">MVP v1.0</span>
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Chuyển sang giao diện tối" aria-pressed="false" title="Chuyển giao diện">
+          <span class="theme-toggle-icon theme-toggle-sun" aria-hidden="true">☀</span>
+          <span class="theme-toggle-icon theme-toggle-moon" aria-hidden="true">☾</span>
+        </button>
+      </div>
     </header>
 
     <section class="learning-goal" aria-labelledby="learning-goal-title">
