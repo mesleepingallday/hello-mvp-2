@@ -14,8 +14,46 @@ const dom = {
   currentInput: document.querySelector('#state-current-input'),
   firstOperand: document.querySelector('#state-first-operand'),
   operator: document.querySelector('#state-operator'),
-  waiting: document.querySelector('#state-waiting')
+  waiting: document.querySelector('#state-waiting'),
+  themeToggle: document.querySelector('#theme-toggle')
 };
+
+
+const THEME_STORAGE_KEY = 'hello-calculator-theme';
+const systemTheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+function getActiveTheme() {
+  const explicitTheme = document.documentElement.dataset.theme;
+  if (explicitTheme === 'light' || explicitTheme === 'dark') return explicitTheme;
+  return systemTheme.matches ? 'dark' : 'light';
+}
+
+function updateThemeControl() {
+  const theme = getActiveTheme();
+  const isDark = theme === 'dark';
+  dom.themeToggle.setAttribute('aria-pressed', String(isDark));
+  dom.themeToggle.setAttribute(
+    'aria-label',
+    isDark ? 'Chuyển sang giao diện sáng' : 'Chuyển sang giao diện tối'
+  );
+  dom.themeToggle.title = isDark ? 'Chuyển sang giao diện sáng' : 'Chuyển sang giao diện tối';
+}
+
+function setTheme(theme) {
+  document.documentElement.dataset.theme = theme;
+  try {
+    localStorage.setItem(THEME_STORAGE_KEY, theme);
+  } catch (_) {}
+  updateThemeControl();
+}
+
+dom.themeToggle.addEventListener('click', () => {
+  setTheme(getActiveTheme() === 'dark' ? 'light' : 'dark');
+});
+
+systemTheme.addEventListener?.('change', () => {
+  if (!document.documentElement.dataset.theme) updateThemeControl();
+});
 
 function render() {
   dom.display.textContent = model.currentInput;
@@ -65,4 +103,5 @@ window.addEventListener('keydown', (event) => {
   }
 });
 
+updateThemeControl();
 render();

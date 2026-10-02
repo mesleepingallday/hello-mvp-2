@@ -572,3 +572,229 @@ h1 {
     color: #8391a5;
   }
 }
+
+
+/* Manual theme control */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.theme-toggle {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  flex: 0 0 auto;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--accent-strong);
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+  transition:
+    transform 0.14s ease,
+    background 0.14s ease,
+    border-color 0.14s ease,
+    box-shadow 0.14s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-1px);
+  border-color: #b8c5d6;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.1);
+}
+
+.theme-toggle:active {
+  transform: translateY(0);
+}
+
+.theme-toggle:focus-visible {
+  outline: 3px solid rgba(37, 88, 199, 0.3);
+  outline-offset: 2px;
+}
+
+.theme-toggle-icon {
+  grid-area: 1 / 1;
+  font-size: 1.05rem;
+  line-height: 1;
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease;
+}
+
+.theme-toggle-moon {
+  opacity: 0;
+  transform: rotate(-25deg) scale(0.65);
+}
+
+html[data-theme="dark"] .theme-toggle-sun {
+  opacity: 0;
+  transform: rotate(25deg) scale(0.65);
+}
+
+html[data-theme="dark"] .theme-toggle-moon {
+  opacity: 1;
+  transform: rotate(0) scale(1);
+}
+
+/* Explicit light preference wins over a dark OS preference. */
+html[data-theme="light"] {
+  color-scheme: light;
+}
+
+html[data-theme="light"] body {
+  background:
+    radial-gradient(circle at 20% 0%, rgba(37, 88, 199, 0.1), transparent 28rem),
+    linear-gradient(180deg, #f7f9fc 0%, #eef2f7 100%);
+}
+
+/* Explicit dark preference also works when the OS is light. */
+html[data-theme="dark"] {
+  --page-bg: #0b1220;
+  --surface: #111827;
+  --surface-soft: #172033;
+  --text: #e5edf8;
+  --muted: #9aa8bc;
+  --line: #2b3950;
+  --accent: #7aa2ff;
+  --accent-soft: #182746;
+  --accent-strong: #b8ccff;
+  --danger: #ff9b9b;
+  --danger-soft: #3a1f25;
+  --success: #82d9ad;
+  --shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+  color-scheme: dark;
+}
+
+html[data-theme="dark"] body {
+  background:
+    radial-gradient(circle at 20% 0%, rgba(122, 162, 255, 0.14), transparent 28rem),
+    linear-gradient(180deg, #101827 0%, var(--page-bg) 100%);
+}
+
+html[data-theme="dark"] .version-badge,
+html[data-theme="dark"] .status-badge,
+html[data-theme="dark"] .theme-toggle {
+  background: rgba(17, 24, 39, 0.9);
+}
+
+html[data-theme="dark"] .theme-toggle:hover {
+  border-color: #4d5f79;
+  background: #1d293b;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.28);
+}
+
+html[data-theme="dark"] .learning-goal {
+  border-color: #334a72;
+  background: rgba(24, 39, 70, 0.82);
+}
+
+html[data-theme="dark"] .learning-goal p { color: #c1cee1; }
+html[data-theme="dark"] .calculator-card,
+html[data-theme="dark"] .learning-panel {
+  border-color: rgba(56, 72, 97, 0.95);
+  background: rgba(17, 24, 39, 0.96);
+}
+html[data-theme="dark"] .status-badge { border-color: #295a44; background: #132a20; }
+html[data-theme="dark"] .status-badge.error { border-color: #6b3138; }
+html[data-theme="dark"] .display-panel {
+  border-color: #334155;
+  background: linear-gradient(180deg, #172033 0%, #111827 100%);
+}
+html[data-theme="dark"] .main-display { color: #8dc0ff; }
+html[data-theme="dark"] .key {
+  border-color: #344258;
+  background: #172033;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.28);
+}
+html[data-theme="dark"] .key:hover { border-color: #4d5f79; background: #1d293b; }
+html[data-theme="dark"] .key-operator {
+  border-color: #39568a;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+}
+html[data-theme="dark"] .key-operator:hover { background: #22365e; }
+html[data-theme="dark"] .key-control { background: #202938; color: #d5deea; }
+html[data-theme="dark"] .key-equal {
+  border-color: #5f86e5;
+  background: linear-gradient(180deg, #547fe5 0%, #315fcb 100%);
+  color: #fff;
+}
+html[data-theme="dark"] .learning-panel > summary,
+html[data-theme="dark"] .state-label { background: #172033; }
+html[data-theme="dark"] .state-label,
+html[data-theme="dark"] .concept-strip span { color: #b6c2d2; }
+html[data-theme="dark"] .state-grid output { background: #111827; color: #e5edf8; }
+html[data-theme="dark"] .concept-strip span { background: rgba(17, 24, 39, 0.78); }
+html[data-theme="dark"] .app-footer { color: #8391a5; }
+
+@media (prefers-color-scheme: dark) {
+  html[data-theme="light"] {
+    --page-bg: #eef2f7;
+    --surface: #ffffff;
+    --surface-soft: #f8fafc;
+    --text: #172033;
+    --muted: #667085;
+    --line: #d8e0ea;
+    --accent: #2558c7;
+    --accent-soft: #e9f0ff;
+    --accent-strong: #173e99;
+    --danger: #a83535;
+    --danger-soft: #fff0f0;
+    --success: #26734d;
+    --shadow: 0 18px 45px rgba(18, 38, 63, 0.12);
+  }
+
+  html[data-theme="light"] .version-badge,
+  html[data-theme="light"] .status-badge,
+  html[data-theme="light"] .theme-toggle { background: rgba(255, 255, 255, 0.85); }
+  html[data-theme="light"] .learning-goal { border-color: #cbd9f5; background: rgba(233, 240, 255, 0.76); }
+  html[data-theme="light"] .learning-goal p { color: #33436a; }
+  html[data-theme="light"] .calculator-card,
+  html[data-theme="light"] .learning-panel {
+    border-color: rgba(203, 213, 225, 0.9);
+    background: rgba(255, 255, 255, 0.96);
+  }
+  html[data-theme="light"] .status-badge { border-color: #cfe7da; background: #edf9f2; }
+  html[data-theme="light"] .status-badge.error { border-color: #f0caca; }
+  html[data-theme="light"] .display-panel {
+    border-color: #cbd5e1;
+    background: linear-gradient(180deg, #f8fafc 0%, #fff 100%);
+  }
+  html[data-theme="light"] .main-display { color: #3368a0; }
+  html[data-theme="light"] .key {
+    border-color: #d2dbe7;
+    background: #f8fafc;
+    box-shadow: 0 2px 0 rgba(15, 23, 42, 0.05);
+  }
+  html[data-theme="light"] .key:hover { border-color: #b8c5d6; background: #f0f4f9; }
+  html[data-theme="light"] .key-operator {
+    border-color: #c9d5f2;
+    background: #e9f0ff;
+    color: #173e99;
+  }
+  html[data-theme="light"] .key-operator:hover { background: #dce7ff; }
+  html[data-theme="light"] .key-control { background: #f3f4f6; color: #374151; }
+  html[data-theme="light"] .key-equal {
+    border-color: #2558c7;
+    background: linear-gradient(180deg, #3166d8 0%, #2558c7 100%);
+    color: #fff;
+  }
+  html[data-theme="light"] .learning-panel > summary,
+  html[data-theme="light"] .state-label { background: #f8fafc; }
+  html[data-theme="light"] .state-label,
+  html[data-theme="light"] .concept-strip span { color: #475569; }
+  html[data-theme="light"] .state-grid output { background: #fff; color: #0f172a; }
+  html[data-theme="light"] .concept-strip span { background: rgba(255, 255, 255, 0.72); }
+  html[data-theme="light"] .app-footer { color: #7b8798; }
+}
+
+@media (max-width: 560px) {
+  .header-actions { gap: 0; }
+  .theme-toggle { width: 40px; height: 40px; }
+}
